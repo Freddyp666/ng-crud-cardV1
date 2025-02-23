@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CardModel } from '../../model/card-model';
 import { CardService } from '../../service/card.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-card',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.sass'
+  styleUrl: './card.component.sass',
 })
 export class CardComponent{
   listCards: CardModel [] = [];
