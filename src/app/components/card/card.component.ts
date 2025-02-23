@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CardModel } from '../../model/card-model';
 import { CardService } from '../../service/card.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,17 +11,18 @@ import { CommonModule } from '@angular/common';
   templateUrl: './card.component.html',
   styleUrl: './card.component.sass',
 })
-export class CardComponent{
+export class CardComponent implements OnInit {
   listCards: CardModel [] = [];
   formCard: FormGroup = new FormGroup({});
   isUpdate: boolean = false;
+  Item: any;
   
   constructor(private cardService: CardService) { }
 
   ngOnInit(): void {
     this.list();
     this.formCard =  new FormGroup({
-      id_card: new FormControl(''),
+      idCard: new FormControl(''),
       name: new FormControl(''),
       number: new FormControl(''),
       type: new FormControl(''),
@@ -73,11 +73,15 @@ export class CardComponent{
 
   selectItem(item: any){
     this.isUpdate = true;
-    this.formCard.controls['id_card'].setValue(item.id_card);
+    this.formCard.controls['idCard'].setValue(item.idCard);
     this.formCard.controls['name'].setValue(item.name);
     this.formCard.controls['number'].setValue(item.number);
     this.formCard.controls['type'].setValue(item.type);
     this.formCard.controls['cvv'].setValue(item.cvv);
   }
   
+  deleteItem(item: any){
+    this.Item = item;
+  }
+
 }

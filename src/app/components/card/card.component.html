@@ -32,7 +32,7 @@
     </nav>
 
     <div class="container">
-        <button class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" aria-label="Close" (click)="newCard()">
+        <button class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" aria-label="Close" data-bs-target="#CardModal" (click)="newCard()">
             <i class="fa fa-plus"></i> New Card
         </button>
 
@@ -55,10 +55,11 @@
                     <td>{{item.type}}</td>
                     <td>{{item.cvv}}</td>
                     <td>
-                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalEdit" title="Edit">
+                        <button class="btn btn-warning btn-sm " data-bs-toggle="modal" data-bs-target="#CardModal" title="Edit" (click)="selectItem(item)">
                             <i class="fa fa-pencil-alt"></i>
                         </button>
-                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Delete">
+                        &nbsp;
+                        <button class="btn btn-danger btn-sm"aria-labelledby="exampleModalLabel" title="Delete" (click)="deleteItem(item.idCard)">
                             <i class="fa fa-trash"></i>
                         </button>
                     </td>
@@ -67,13 +68,14 @@
         </table>
     </div>
 
-    <!-- Modal New Card-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modals-->
+    <div class="modal fade" id="CardModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Manage Card</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 *ngIf="!isUpdate" class="modal-title">New Card</h5>
+                    <h5 *ngIf="isUpdate" class="modal-title">Edit Card</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="newCard()"></button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -93,46 +95,20 @@
                             <label for="cvv" class="form-label">CVV</label>
                             <input type="text" class="form-control" id="cvv">
                         </div>
-                        <button type="submit" class="btn btn-success w-100">Save</button>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button *ngIf="!isUpdate" type="button" class="btn btn-success btn-sm" title="Save" >Save</button>
+                    <button *ngIf="isUpdate" type="button" class="btn btn-warning btn-sm" title="Update">Update</button>
+                </div>
 
-    /* Modal Edit Card */
-    <div class="modal fade" id="exampleModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Manage Card</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="number" class="form-label">Number</label>
-                            <input type="text" class="form-control" id="number">
-                        </div>
-                        <div class="mb-3">
-                            <label for="type" class="form-label">Type</label>
-                            <input type="text" class="form-control" id="type">
-                        </div>
-                        <div class="mb-3">
-                            <label for="cvv" class="form-label">CVV</label>
-                            <input type="text" class="form-control" id="cvv">
-                        </div>
-                        <button type="submit" class="btn btn-success w-100">Save</button>
-                    </form>
-                </div>
+                
+
+                
             </div>
         </div>
     </div>
-    
 
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="container">
