@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CardModel } from '../../model/card-model';
 import { CardService } from '../../service/card.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.sass',
 })
@@ -17,7 +20,7 @@ export class CardComponent implements OnInit {
   isUpdate: boolean = false;
   Item: any;
   
-  constructor(private cardService: CardService) { }
+  constructor(private cardService: CardService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.list();
@@ -73,11 +76,14 @@ export class CardComponent implements OnInit {
 
   selectItem(item: any){
     this.isUpdate = true;
+    this.cdRef.detectChanges();
     this.formCard.controls['idCard'].setValue(item.idCard);
     this.formCard.controls['name'].setValue(item.name);
     this.formCard.controls['number'].setValue(item.number);
     this.formCard.controls['type'].setValue(item.type);
     this.formCard.controls['cvv'].setValue(item.cvv);
+    console.log('Item seleccionado:', item);
+    console.log('FormCard después de selectItem:', this.formCard.value);
   }
   
   deleteItem(item: any){
