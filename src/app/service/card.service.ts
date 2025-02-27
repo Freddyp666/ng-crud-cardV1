@@ -11,7 +11,7 @@ export class CardService {
   constructor(private httpClient: HttpClient) { }
 
   getCards():Observable<CardModel[]>{
-    return  this.httpClient.get<CardModel[]>('http://localhost:8080/api/v1/card'+'/list').pipe(map(response => response));
+    return  this.httpClient.get<CardModel[]>('http://localhost:8080/api/v1/card'+'/list').pipe(map(response=>response));
     
   }
 
