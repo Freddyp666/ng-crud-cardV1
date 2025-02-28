@@ -17,7 +17,7 @@ export class CardComponent implements OnInit {
   formCard: FormGroup = new FormGroup({});
   isUpdate: boolean = false;
   Item: any;
-
+  selectedItem: any; 
   @ViewChild('deleteModal') deleteModal!: ElementRef;
 
   constructor(private cardService: CardService) {}
@@ -75,19 +75,31 @@ export class CardComponent implements OnInit {
     this.formCard.controls['cvv'].setValue(item.cvv);
   }
 
-  delete(id: any) {
-    this.cardService.deleteCard(id.idCard).subscribe((resp) => {
-      console.log("la opcion deborrar");
+  delete(item: any) {
+    console.log("la opcion deborrar" + item);
+    this.cardService.deleteCard(item).subscribe((resp) => {
       if (resp) {
         this.list();
+        this.closeDeleteModal();
       }
-    });
+    }); 
   }
 
-  closeDeleteModal() {
+  openDeleteModal(item: any)  {
+    this.selectedItem = item;
+    // Abre el modal de eliminación manualmente usando JavaScript
     if (this.deleteModal && this.deleteModal.nativeElement) {
-      const modal = this.deleteModal.nativeElement;
-      modal.querySelector('.btn-close').click();
+        const modal = this.deleteModal.nativeElement;
+        modal.querySelector('.btn-open').click();
     }
+}
+
+closeDeleteModal() {
+    // Cierra el modal de eliminación manualmente usando JavaScript
+    if (this.deleteModal && this.deleteModal.nativeElement) {
+        const modal = this.deleteModal.nativeElement;
+        modal.querySelector('.btn-close').click();
+    }   
+
   }
 }

@@ -33,7 +33,7 @@
                         <i class="fa fa-pencil-alt"></i>
                     </button>
                     &nbsp;
-                    <button class="btn btn-danger btn-sm" aria-labelledby="exampleModalLabel" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="delete(item.idCard)">
+                    <button class="btn btn-danger btn-sm" aria-labelledby="exampleModalLabel" title="Delete" (click)="openDeleteModal(item)">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>
@@ -81,7 +81,7 @@
 
 
 <!-- Delete Modal -->	
-<div class="modal fade" id="deleteModal" tabindex="-1" #deleteModal aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" #deleteModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,10 +93,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-danger btn-sm" title="Delete">Yes</button>
+                <button type="button" class="btn btn-danger btn-sm" title="Delete" (click)="delete(selectedItem.idCard)">Yes</button>
             </div>
         </div>
     </div>
+    <button type="button" class="btn btn-primary btn-open" data-bs-toggle="modal" data-bs-target="#deleteModal" title="delete" style="display:none"></button>
 </div>
 
 <nav class="navbar fixed-bottom navbar-light bg-light">

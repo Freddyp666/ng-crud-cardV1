@@ -7,6 +7,8 @@ import { CardModel } from '../model/card-model';
   providedIn: 'root'
 })
 export class CardService {
+  private baseUrl = 'http://localhost:8080/api/v1/card';
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,8 +25,8 @@ export class CardService {
     return this.httpClient.post('http://localhost:8080/api/v1/card'+'/update', request).pipe(map(response => response));
   }
 
-  deleteCard(id: number): Observable<any> {
-    return this.httpClient.get('http://localhost:8080/api/v1/card'+'/delete/'+id).pipe(map(response => response));
+  deleteCard(id: number): Observable<any> {  
+    return this.httpClient.put(`${this.baseUrl}/delete/${id}`,{status:0}).pipe(map(response => response));
   }
 
 }

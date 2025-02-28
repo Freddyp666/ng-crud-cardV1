@@ -4,5 +4,5 @@ export class CardModel {
     number: string = '';
     type= '';
     cvv: number =0;
-    status: number = 0;
+    status: number = 1;
 }
