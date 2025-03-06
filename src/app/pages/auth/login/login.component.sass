@@ -1,62 +1,53 @@
-.auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
-}
+.login-container
+  width: 320px
+  margin: 50px auto
+  padding: 20px
+  background-image: url('/assets/img/fond.jpg')
+  background-color: #0B3D02
+  color: white
+  border-radius: 8px
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3)
+  text-align: center
 
-.auth-box {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 300px;
-}
+  h2
+    margin-bottom: 15px
 
-.input-group {
-  margin-bottom: 15px;
-  text-align: left;
-}
+  .input-group
+    margin-bottom: 15px
 
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+  input
+    width: 100%
+    padding: 10px
+    border: none
+    border-radius: 4px
+    outline: none
+    background: rgb(251, 251, 251)
+    color: white
 
-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+  button
+    width: 100%
+    padding: 10px
+    background-color: #6ABE9D
+    border: none
+    border-radius: 4px
+    color: white
+    font-weight: bold
+    cursor: pointer
 
-button {
-  width: 100%;
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-}
+    &:hover
+      background-color: #6ABE9D
 
-button:hover {
-  background:rgb(9, 128, 255);
-}
+  .register-link
+    margin-top: 10px
 
-p {
-  margin-top: 10px;
-}
+    p
+      font-size: 14px
 
-a {
-  color: #007bff;
-  text-decoration: none;
-}
+    a
+      color: #58D68D
+      font-weight: bold
+      text-decoration: none
+      cursor:pointer
 
-a:hover {
-  text-decoration: underline;
-}
+      &:hover
+        text-decoration: underline
