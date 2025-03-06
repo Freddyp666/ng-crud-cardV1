@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.sass'
 })
