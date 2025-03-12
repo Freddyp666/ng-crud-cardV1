@@ -3,17 +3,22 @@
   <h2>Registro</h2>
   <form>
     <div class="input-group">
-      <input type="text" placeholder="Usuario" required />
+      <input type="text" placeholder="Nombre" required />
     </div>
     <div class="input-group">
-      <input type="email" placeholder="Correo Electrónico" required />
+      <input type="text" placeholder="Apellido" required />
+    </div>
+    <div class="input-group">
+      <input type="email" placeholder="Correo" required />
     </div>
     <div class="input-group">
       <input type="password" placeholder="Contraseña" required />
     </div>
     <button type="submit">Registrarse</button>
   </form>
-</div>
-<div class="login-link">
-  <p>¿Ya tienes cuenta? <a routerLink="/login">Iniciar Sesión</a></p>
-</div>
+  <div class="login-link">
+    <p>¿Ya tienes cuenta? <a (click)="login()">Iniciar Sesión</a></p>
+  </div>
+</div>  <!-- End of register-container -->
+<!-- End of src/app/pages/auth/register/register.component.html --> 
+```
