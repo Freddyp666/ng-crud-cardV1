@@ -1,16 +1,15 @@
 <div class="login-container">
-    <h2>Iniciar Sesión</h2>
-    <form>
-      <div class="input-group">
-        <input type="text" placeholder="Usuario" required />
-      </div>
-      <div class="input-group">
-        <input type="password" placeholder="Contraseña" required />
-      </div>
-      <button type="submit">Entrar</button>
-    </form>
-    <div class="register-link">
-      <p>¿No tienes cuenta? <a (click)="registrarse()">Regístrate</a></p>
+  <h2>Iniciar Sesión</h2>
+  <form (ngSubmit)="login()">
+    <div class="input-group">
+      <input type="email" name="email" placeholder="Email" [(ngModel)]="email" required />
+    </div>
+    <div class="input-group">
+      <input type="password" name="password" placeholder="Contraseña" [(ngModel)]="password" required />
+    </div>
+    <button type="submit">Entrar</button>
+  </form>
+  <div class="register-link">
+    <p>¿No tienes cuenta? <a (click)="registrarse()">Regístrate</a></p>
   </div>
-  </div>
-  
+</div>
