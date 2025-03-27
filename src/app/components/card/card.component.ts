@@ -20,7 +20,9 @@ export class CardComponent implements OnInit {
   selectedItem: any; 
   @ViewChild('deleteModal') deleteModal!: ElementRef;
 
-  constructor(private cardService: CardService) {}
+  constructor(private cardService: CardService) {
+
+  }
 
   ngOnInit(): void {
     this.list();
@@ -102,4 +104,6 @@ closeDeleteModal() {
     }   
 
   }
+
+
 }

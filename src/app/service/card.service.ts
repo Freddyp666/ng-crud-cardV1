@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { CardModel } from '../model/card-model';
 
@@ -13,7 +13,12 @@ export class CardService {
   constructor(private httpClient: HttpClient) { }
 
   getCards():Observable<CardModel[]>{
-    return  this.httpClient.get<CardModel[]>('http://localhost:8080/api/v1/card'+'/list').pipe(map(response=>response));
+    const token = localStorage.getItem('token');
+    const headers=new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return  this.httpClient.get<CardModel[]>(`${this.baseUrl}/list`,{headers}).pipe(map(response => response));
     
   }
 
