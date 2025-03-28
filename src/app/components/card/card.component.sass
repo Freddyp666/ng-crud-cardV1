@@ -1,0 +1,27 @@
+.container1
+  position: relative
+  height: 100vh // Opcional, para ocupar toda la altura del viewport
+
+.btn-close
+  position: absolute
+  top: 1rem // Espaciado desde la parte superior
+  right: 1rem // Espaciado desde el borde derecho
+  background-color: #ff4d4d
+  color: #fff
+  border: none
+  padding: 0.5rem 1rem
+  border-radius: 0.5rem
+  font-size: 1rem
+  font-weight: bold
+  cursor: pointer
+  transition: background-color 0.3s ease
+
+  &:hover
+    background-color: #ff1a1a
+
+  &:focus
+    outline: none
+    box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.5)
+
+  &:active
+    transform: scale(0.95)

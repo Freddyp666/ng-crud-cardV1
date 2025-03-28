@@ -4,6 +4,7 @@ import { CardService } from '../../service/card.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-card',
@@ -17,12 +18,13 @@ export class CardComponent implements OnInit {
   formCard: FormGroup = new FormGroup({});
   isUpdate: boolean = false;
   Item: any;
-  selectedItem: any; 
+  selectedItem: any;
   @ViewChild('deleteModal') deleteModal!: ElementRef;
 
-  constructor(private cardService: CardService) {
-
-  }
+  constructor(
+    private cardService: CardService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.list();
@@ -78,32 +80,33 @@ export class CardComponent implements OnInit {
   }
 
   delete(item: any) {
-    console.log("la opcion deborrar" + item);
+    console.log('la opcion deborrar' + item);
     this.cardService.deleteCard(item).subscribe((resp) => {
       if (resp) {
         this.list();
         this.closeDeleteModal();
       }
-    }); 
+    });
   }
 
-  openDeleteModal(item: any)  {
+  openDeleteModal(item: any) {
     this.selectedItem = item;
     // Abre el modal de eliminación manualmente usando JavaScript
     if (this.deleteModal && this.deleteModal.nativeElement) {
-        const modal = this.deleteModal.nativeElement;
-        modal.querySelector('.btn-open').click();
+      const modal = this.deleteModal.nativeElement;
+      modal.querySelector('.btn-open').click();
     }
-}
-
-closeDeleteModal() {
-    // Cierra el modal de eliminación manualmente usando JavaScript
-    if (this.deleteModal && this.deleteModal.nativeElement) {
-        const modal = this.deleteModal.nativeElement;
-        modal.querySelector('.btn-close').click();
-    }   
-
   }
 
+  closeDeleteModal() {
+    // Cierra el modal de eliminación manualmente usando JavaScript
+    if (this.deleteModal && this.deleteModal.nativeElement) {
+      const modal = this.deleteModal.nativeElement;
+      modal.querySelector('.btn-close').click();
+    }
+  }
 
+  closeSesion() {
+    this.authService.logout();
+  }
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 interface AuthResponse {
     token: string;
+
 }
 
 @Injectable({
@@ -41,14 +42,14 @@ export class AuthService {
 
     // Eliminar el token del almacenado local
     localStorage.removeItem('token');
+    localStorage.removeItem('expiration');
 
-    //llaamr al endpoint de logout
-
-    this.http.post('http://localhost:8080/api/auth/logout', {}).subscribe(() => {
-      console.log('Sesión cerrada');
-    });
-
-    // Redirigir al usuario a la página de login
-    this.router.navigate(['/login']);
+    // Redirigir al usuario a la página de inicio de sesión
+    this.router.navigate(['/auth/login']);
   }
+
+
+
+
+
 }
